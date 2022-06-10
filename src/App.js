@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import StudentList from './components/StudentList';
 import ClassInfo from './components/ClassInfo';
+import DeleteButton from './components/DeleteButton';
 
 function App() {
     const [studentData, setStudentData] = useState([
@@ -47,10 +48,15 @@ function App() {
         setStudentData(students);
     };
 
+    const deleteStudents = () => {
+        setStudentData([]);
+    };
+
     return (
         <main>
             <h1>Attendance</h1>
             <ClassInfo memberCount={studentData.length}></ClassInfo>
+            <DeleteButton onDelete={deleteStudents} />
             <StudentList
                 students={studentData}
                 onUpdateStudent={updateStudentData}></StudentList>
